@@ -5,6 +5,8 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,9 +39,9 @@ public class ParkingManagerService {
 		return parkinManagerRepository.save(vaga);
 	}
 
-	public List<Vaga> findAll() {
+	public Page<Vaga> findAll(Pageable pageable) {
 
-		return parkinManagerRepository.findAll();
+		return parkinManagerRepository.findAll(pageable);
 	}
 
 	public Optional<Vaga> findById(UUID id) {
